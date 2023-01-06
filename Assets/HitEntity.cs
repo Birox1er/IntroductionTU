@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class HitEntity : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int touche { get; private set; }
+    private EntityHealth entity;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.GetComponent<EntityHealth>())
+        {
+            other.GetComponent<EntityHealth>().Hit();
+        }
     }
 }
