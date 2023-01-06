@@ -19,6 +19,18 @@ public class AnimatorBinding : MonoBehaviour
         _move.OnStopMove += stopMove;
         _attack.OnStartAttack += setAttack;
         _attack.OnStopAttack += stopAttack;
+        _Hp.OnStartDamage += setDamage;
+        _Hp.OnStopDamage += stopDamage;
+    }
+
+    private void stopDamage()
+    {
+        _animator.SetBool("GetHit", false);
+    }
+
+    private void setDamage()
+    {
+        _animator.SetBool("GetHit", true);
     }
 
     private void stopAttack()

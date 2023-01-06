@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class HitEntity : MonoBehaviour
 {
-    public int touche { get; private set; }
-    private EntityHealth entity;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<EntityHealth>())
         {
             other.GetComponent<EntityHealth>().Hit();
+        }
+        else if (other.GetComponentInParent<EntityHealth>())
+        {
+            other.GetComponentInParent<EntityHealth>().Hit();
         }
     }
 }
