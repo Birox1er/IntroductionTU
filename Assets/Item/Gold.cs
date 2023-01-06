@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Gold : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] int _amount = 5;
+    
+    private GoldUI _ui;
+    private EntityGold _entityGold;
+    protected override void Start()
     {
+        base.Start();
         
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Action()
     {
-        
+        base.Action();
+        gold.AddGold(_amount);
+        goldUI.UpdateGold(gold.amount);
     }
 }

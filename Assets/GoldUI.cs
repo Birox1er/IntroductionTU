@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.Rendering;
 
 public class GoldUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
+    private TextMeshProUGUI text;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        text = GetComponentInChildren<TextMeshProUGUI>();
+        text.text = "Gold : ";
+        UpdateGold(0);
+    }
+    public void UpdateGold(int amount)
+    {
+        text.text = "Gold : " + amount.ToString();
     }
 }
