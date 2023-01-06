@@ -25,13 +25,13 @@ public class Item : MonoBehaviour
     {
         if(coll.transform.parent.tag == "Player")
         {
-            _gold = coll.transform.parent.parent.GetComponent<EntityGold>();
+            _gold = FindObjectOfType<EntityGold>();
             _entityHealth = coll.gameObject.GetComponent<EntityHealth>();
             _healthUI = coll.gameObject.GetComponent<HealthUI>();
             Action();
         }
         
-        //Destroy(gameObject);
+        Destroy(gameObject);
     }
     protected virtual void Action()
     {
