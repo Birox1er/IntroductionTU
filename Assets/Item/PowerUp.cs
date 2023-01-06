@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class PowerUp : Item
 {
-    private 
-    // Start is called before the first frame update
-    void Start()
+    private int amount = 20;
+    protected override void Action()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Action();
+        health.AddMaxHealth(amount);
+        healthUI.UpdateSlider(health.CurrentHealth, health.maxHealth);
     }
 }

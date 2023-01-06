@@ -17,13 +17,21 @@ public class EntityHealth : MonoBehaviour
     [SerializeField] int _maxHealth;
     [SerializeField] UnityEvent _onEvent;
     [SerializeField] UnityEvent _onEventPost;
-
+    [SerializeField] HealthUI _healthUI;
     public int maxHealth { get { return _maxHealth; } }
     public int CurrentHealth { get;  private set; }
+
 
     private void Awake()
     {
         CurrentHealth = _maxHealth;
+    }
+
+    IEnumerator animDmg()
+    {
+        OnStartDamage?.Invoke();
+        yield return new WaitForSeconds(1);
+        OnStopDamage?.Invoke();
     }
     public void AddHealth(int amount)
     {
@@ -34,15 +42,40 @@ public class EntityHealth : MonoBehaviour
             CurrentHealth = _maxHealth;
         }
     }
-    public void Hit()
+    
+    public void AddMaxHealth(int amount)
     {
-        CurrentHealth -= 10;
-        OnStartDamage?.Invoke();
+        _maxHealth += amount;
+        if (_maxHealth < 50)
+        {
+            _maxHealth = 50;
+            if(CurrentHealth > _maxHealth)
+            {
+                CurrentHealth = _maxHealth;
+            }
+        }
+        if (amount > 0)
+        {
+            AddHealth(amount);
+        }
+        else
+        {
+            _healthUI.UpdateSlider(CurrentHealth, _maxHealth);
+        }
+    }
+    public void Hit(int damage)
+    {
+        OnStopDamage?.Invoke();
+        CurrentHealth -= damage;
+        StartCoroutine(animDmg());
         if (CurrentHealth <= 0)
         {
             Death();
         }
-        OnStopDamage?.Invoke();
+        if (_healthUI)
+        {
+            _healthUI.UpdateSlider(CurrentHealth, _maxHealth);
+        }
     }
 
     public void Death()

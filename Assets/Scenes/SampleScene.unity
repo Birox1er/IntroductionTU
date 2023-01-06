@@ -234,6 +234,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 30
+  _onEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _onEventPost:
+    m_PersistentCalls:
+      m_Calls: []
+  _healthUI: {fileID: 0}
 --- !u!1 &58043774
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f72b57696a4fd44686ee9ab3191a519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 50
 --- !u!95 &58043778
 Animator:
   serializedVersion: 4
@@ -732,6 +740,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 20
+  _onEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _onEventPost:
+    m_PersistentCalls:
+      m_Calls: []
+  _healthUI: {fileID: 0}
 --- !u!4 &395592695
 Transform:
   m_ObjectHideFlags: 0
@@ -1380,6 +1395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f72b57696a4fd44686ee9ab3191a519, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 10
 --- !u!1 &1044316933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1785,6 +1801,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+  _onEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  _onEventPost:
+    m_PersistentCalls:
+      m_Calls: []
+  _healthUI: {fileID: 720956017}
 --- !u!114 &1349007870
 MonoBehaviour:
   m_ObjectHideFlags: 0
