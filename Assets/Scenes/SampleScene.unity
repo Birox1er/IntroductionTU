@@ -234,10 +234,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 30
-  _onEvent:
+  _onHeal:
     m_PersistentCalls:
       m_Calls: []
-  _onEventPost:
+  _onHealthUp:
+    m_PersistentCalls:
+      m_Calls: []
+  _onDmgTaken:
     m_PersistentCalls:
       m_Calls: []
   _healthUI: {fileID: 0}
@@ -740,10 +743,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 20
-  _onEvent:
+  _onHeal:
     m_PersistentCalls:
       m_Calls: []
-  _onEventPost:
+  _onHealthUp:
+    m_PersistentCalls:
+      m_Calls: []
+  _onDmgTaken:
     m_PersistentCalls:
       m_Calls: []
   _healthUI: {fileID: 0}
@@ -1396,6 +1402,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 10
+--- !u!198 &948429659 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 19800006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14,
+    type: 3}
+  m_PrefabInstance: {fileID: 1656978414}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &948429662 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14,
+    type: 3}
+  m_PrefabInstance: {fileID: 1656978414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1044316933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,6 +1728,7 @@ Transform:
   - {fileID: 1794143065}
   - {fileID: 1850274032}
   - {fileID: 1743526742}
+  - {fileID: 948429662}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1740,6 +1759,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
   _onEventPost:
@@ -1749,6 +1780,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1801,12 +1844,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _onEvent:
+  _onHeal:
     m_PersistentCalls:
       m_Calls: []
-  _onEventPost:
+  _onHealthUp:
     m_PersistentCalls:
       m_Calls: []
+  _onDmgTaken:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 948429659}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _healthUI: {fileID: 720956017}
 --- !u!114 &1349007870
 MonoBehaviour:
@@ -2023,6 +2081,104 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1794143064}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1656978414
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1349007866}
+    m_Modifications:
+    - target: {fileID: 100006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_Name
+      value: CFX2_BrokenHeart
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800002, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800004, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19900002, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19900004, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19900006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11400006, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: bcaff8fc36e95584bb27cc3cf7c6cb14, type: 3}
 --- !u!1 &1667000043
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,8 +17,7 @@ public class PlayerAttack : MonoBehaviour
     public event Action OnStopAttack;
 
     [SerializeField] HitEntity _hitBox;
-    [SerializeField] UnityEvent _onEvent;
-    [SerializeField] UnityEvent _onEventPost;
+    [SerializeField] UnityEvent _onAttack;
 
     Coroutine AttackingRoutine { get; set; }
     private void Start()
@@ -35,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
     IEnumerator AttackRoutine()
     {
         OnStartAttack?.Invoke();
+        _onAttack.Invoke();
 
         while (true)
         {

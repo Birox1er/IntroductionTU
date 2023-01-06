@@ -15,8 +15,10 @@ public class EntityHealth : MonoBehaviour
     public event Action OnStopDamage;
 
     [SerializeField] int _maxHealth;
-    [SerializeField] UnityEvent _onEvent;
-    [SerializeField] UnityEvent _onEventPost;
+    [SerializeField] UnityEvent _onHeal;
+    [SerializeField] UnityEvent _onHealthUp;
+    [SerializeField] UnityEvent _onDmgTaken;
+    [SerializeField] UnityEvent _onDeath;
     [SerializeField] HealthUI _healthUI;
     public int maxHealth { get { return _maxHealth; } }
     public int CurrentHealth { get;  private set; }
@@ -36,6 +38,7 @@ public class EntityHealth : MonoBehaviour
     public void AddHealth(int amount)
     {
         CurrentHealth += amount;
+        _onHeal.Invoke();
         
         if (CurrentHealth > _maxHealth)
         {
@@ -46,6 +49,7 @@ public class EntityHealth : MonoBehaviour
     public void AddMaxHealth(int amount)
     {
         _maxHealth += amount;
+        _onHealthUp.Invoke();
         if (_maxHealth < 50)
         {
             _maxHealth = 50;
@@ -75,6 +79,7 @@ public class EntityHealth : MonoBehaviour
         if (_healthUI)
         {
             _healthUI.UpdateSlider(CurrentHealth, _maxHealth);
+            _onDmgTaken.Invoke();
         }
     }
 

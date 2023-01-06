@@ -67,7 +67,7 @@ public class PlayerMove : MonoBehaviour
         //if (OnStartMove != null) OnStartMove.Invoke();
         // Manière plus agréable d'utilisation, totalement équivalent à la ligne au dessus.
         OnStartMove?.Invoke();
-
+        _onEvent?.Invoke();
         while (true)
         {
             yield return new WaitForFixedUpdate();
@@ -89,6 +89,7 @@ public class PlayerMove : MonoBehaviour
     private void StopMove(InputAction.CallbackContext obj)
     {
         OnStopMove?.Invoke();
+        _onEventPost?.Invoke();
         StopCoroutine(MovementRoutine);
         JoystickDirection = Vector2.zero;
         Debug.Log($"Stop Move : {obj.ReadValue<Vector2>()}");
