@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class HealthPotion : Item
 {
-    // Start is called before the first frame update
-    void Start()
+    private int amount = 20;
+    protected override void Action()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        base.Action();
+        health.AddHealth(amount);
+        healthUI.UpdateSlider(health.CurrentHealth, health.maxHealth);
     }
 }
+

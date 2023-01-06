@@ -8,15 +8,21 @@ public class Item : MonoBehaviour
     
     private EntityGold _gold;
     public EntityGold gold { get { return _gold; } }
+
     private GoldUI _goldUI;
     public GoldUI goldUI { get { return _goldUI; } }
 
     private EntityHealth _entityHealth;
+    public EntityHealth health { get { return _entityHealth; } }
+
     private HealthUI _healthUI;
+    public HealthUI healthUI { get { return _healthUI; } }
 
     protected virtual void Start()
     {
         _goldUI = FindObjectOfType<GoldUI>();
+        _healthUI = FindObjectOfType<HealthUI>();
+
         _col = GetComponent<SphereCollider>();
         if (_col == null) { print("NO COL FIND"); }
 
@@ -26,8 +32,7 @@ public class Item : MonoBehaviour
         if(coll.transform.parent.tag == "Player")
         {
             _gold = FindObjectOfType<EntityGold>();
-            _entityHealth = coll.gameObject.GetComponent<EntityHealth>();
-            _healthUI = coll.gameObject.GetComponent<HealthUI>();
+            _entityHealth = coll.transform.parent.GetComponent<EntityHealth>();
             Action();
         }
         
@@ -36,6 +41,8 @@ public class Item : MonoBehaviour
     protected virtual void Action()
     {
         print(_gold);
+        print(_entityHealth);
+
         print("Is Happening");
     }
 }
