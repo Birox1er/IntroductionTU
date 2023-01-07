@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Item : MonoBehaviour
 {
@@ -40,8 +41,6 @@ public class Item : MonoBehaviour
     }
     protected virtual void Action()
     {
-        print(_gold);
-        print(_entityHealth);
 
         print("Is Happening");
     }

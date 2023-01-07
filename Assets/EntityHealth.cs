@@ -84,7 +84,8 @@ public class EntityHealth : MonoBehaviour
     }
 
     public void Death()
-    { 
+    {
+        _onDeath.Invoke();
         Destroy(gameObject);
     }
 }
